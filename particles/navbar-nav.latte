@@ -1,0 +1,27 @@
+<ul class="uk-navbar-nav">
+    <li n:foreach="array_slice($container->getService('system.menus')->getMenu($options->menu)['items'], $options->offset, $options->count) as $key => $item" n:class="$webby->link === $item['page'] ? 'uk-active'">
+
+        <a n:href="$item['page']">
+            <span n:if="$item['icon']" n:attr="uk-icon => 'icon: ' . $item['icon']"></span>
+            {$item['title']}
+        </a>
+
+        {if !empty($item['items'])}
+            <div n:class="'uk-navbar-dropdown-width-' . count($item['items']), 'uk-navbar-dropdown'">
+                <div n:class="'uk-child-width-1-' . count($item['items']), 'uk-navbar-dropdown-grid'" uk-grid>
+                    <div n:foreach="$item['items'] as $subItem">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <div n:foreach="$item['items'] as $subItem">
+                                <li class="uk-nav-header">{$subItem["title"]}</li>
+                                <li n:foreach="$subItem['items'] as $subSubItem">
+                                    <a n:href="$subSubItem['page']">{$subSubItem['title']}</a>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {/if}
+
+    </li>
+</ul>

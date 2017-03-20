@@ -1,0 +1,17 @@
+{
+	"name": "webby/theme-moltin",
+	"type": "webby-theme",
+	"description": "UIkit theme for Webby CMS",
+	"keywords": ["webby","moltin","theme","uikit"],
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Bronislav Sedlák",
+			"homepage": "https://bronislavsedlak.com"
+		}
+	],
+	"config": {
+		"secure-http": false
+	},
+	"minimum-stability": "dev"
+}
