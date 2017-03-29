@@ -1,5 +1,5 @@
 <a class="uk-navbar-toggle" uk-toggle="target: #mobile-menu" href="#">
-    <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+    <span uk-navbar-toggle-icon></span> <span n:if="$options->text" class="uk-margin-small-left">{$options->text}</span>
 </a>
 <div id="mobile-menu" uk-offcanvas="overlay: true">
     <div class="uk-offcanvas-bar">
