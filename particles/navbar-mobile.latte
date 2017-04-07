@@ -1,0 +1,27 @@
+<nav class="uk-navbar-container" n:attr="$options['sticky'] ? uk-sticky" role="navigation">
+    <div n:if="$options['left']" class="uk-navbar-left">
+        <a class="uk-navbar-toggle" uk-toggle="target: #mobile-menu" href="#">
+            <span uk-navbar-toggle-icon></span> <span n:if="$options['text']" class="uk-margin-small-left">{$options['text']}</span>
+        </a>
+    </div>
+</nav>
+<div id="mobile-menu" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+            <li n:foreach="$container->getService('system.menus')->getMenu($options['menu'])['items'] as $item" n:class="$webby->link === $item['page'] ? 'uk-active', !empty($category['children']) ? 'uk-parent', empty($item['page']) ? 'uk-nav-header'">
+                {if empty($item['page'])}
+                    {$item['title']}
+                {else}
+                    <a n:href="$item['page']">{$item['title']}</a>
+                {/if}
+                {if !empty($item['items'])}
+                    <ul class="uk-nav-sub">
+                        <li n:foreach="$item['items'] as $subItem">
+                            <a n:href="$subItem['page']">{$subItem['title']}</a>
+                        </li>
+                    </ul>
+                {/if}
+            </li>
+        </ul>
+    </div>
+</div>

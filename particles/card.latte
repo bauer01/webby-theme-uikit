@@ -1,9 +1,9 @@
 <div class="uk-card">
     <div class="uk-card-media-top">
-        <img n:attr="src => $options->image, alt => $options->title" />
+        <img n:attr="src => $options['image'], alt => $options['title']" />
     </div>
     <div class="uk-card-body">
-        <h3 class="uk-card-title">{$options->title}</h3>
-        <p n:if="$options->description">{$options->description}</p>
+        <h3 class="uk-card-title">{$options['title']}</h3>
+        <p n:if="!empty($options['description'])">{$options['description']}</p>
     </div>
 </div>

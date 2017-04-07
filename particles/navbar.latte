@@ -1,0 +1,20 @@
+<div {if !empty($options['sticky'])} uk-sticky="animation: uk-animation-slide-top; top: 1; cls-active: uk-box-shadow-large"{/if}>
+    <nav n:attr="uk-navbar => 'dropbar: ' . $options['dropbar']" class="uk-navbar-container" role="navigation">
+        <div n:if="!empty($options['left'])" class="uk-navbar-left">
+            {foreach $options['left'] as $item}
+                {particle $item['particle'] (expand) $item}
+            {/foreach}
+        </div>
+        <div n:if="!empty($options['center'])" class="uk-navbar-center">
+            {foreach $options['center'] as $item}
+                {particle $item['particle'] (expand) $item}
+            {/foreach}
+        </div>
+        <div n:if="!empty($options['right'])" class="uk-navbar-right">
+            {foreach $options['right'] as $item}
+                {particle $item['particle'] (expand) $item}
+            {/foreach}
+        </div>
+    </nav>
+    <div n:if="$options['dropbar']" class="uk-navbar-dropbar"></div>
+</div>

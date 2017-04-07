@@ -1,3 +1,5 @@
-<ul n:class="uk-iconnav, $options->vertical ?: 'uk-iconnav-vertical'">
-    <li n:foreach="$options->items as $item"><a n:attr="uk-icon => 'icon: ' . $item['icon']" href="{$item['link']}"></a></li>
+<ul n:class="uk-iconnav, $options['vertical'] ?: 'uk-iconnav-vertical'">
+    <li n:foreach="$options['items'] as $item">
+        <a n:attr="uk-icon => 'icon: ' . $item['icon']" href="{$item['link']}"></a>
+    </li>
 </ul>

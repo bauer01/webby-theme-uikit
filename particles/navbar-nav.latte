@@ -1,27 +1,33 @@
 <ul class="uk-navbar-nav">
-    <li n:foreach="array_slice($container->getService('system.menus')->getMenu($options->menu)['items'], $options->offset, $options->count) as $key => $item" n:class="$webby->link === $item['page'] ? 'uk-active'">
-
-        <a n:href="$item['page']">
-            <span n:if="$item['icon']" n:attr="uk-icon => 'icon: ' . $item['icon']"></span>
-            {$item['title']}
-        </a>
-
-        {if !empty($item['items'])}
-            <div n:class="'uk-navbar-dropdown-width-' . count($item['items']), 'uk-navbar-dropdown'">
-                <div n:class="'uk-child-width-1-' . count($item['items']), 'uk-navbar-dropdown-grid'" uk-grid>
-                    <div n:foreach="$item['items'] as $subItem">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <div n:foreach="$item['items'] as $subItem">
-                                <li class="uk-nav-header">{$subItem["title"]}</li>
-                                <li n:foreach="$subItem['items'] as $subSubItem">
-                                    <a n:href="$subSubItem['page']">{$subSubItem['title']}</a>
-                                </li>
+    {foreach array_slice($container->getService('system.menus')->getMenu($options['menu'])['items'], $options['offset'], $options['count']) as $item}
+        {var link = empty($item['page']) ? '#' : $item['page']}
+        <li n:class="$link !== '#' && $webby->link === $item['page'] ? 'uk-active'">
+            <a n:href="$link">
+                <span n:if="!empty($item['icon'])" n:attr="uk-icon => 'icon: ' . $item['icon']"></span>
+                {$item['title']}
+            </a>
+            <div n:if="!empty($item['items'])" class="uk-navbar-dropdown">
+                {foreach $item['items'] as $subItem}
+                    {var link = empty($subSubItem['page']) ? '#' : $subSubItem['page']}
+                    {if $options['images']}
+                        <div class="uk-text-center uk-dropdown-grid uk-child-width-expand" uk-grid>
+                            <div n:foreach="$subItem['items'] as $subSubItem">
+                                <a n:href="$link">
+                                    <img n:if="!empty($subSubItem['image'])" n:attr="src => $subSubItem['image']" />
+                                    {$subSubItem['title']}
+                                </a>
                             </div>
+                        </div>
+                    {else}
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-nav-header">{$subItem["title"]}</li>
+                            <li n:if="!$options['images']" n:foreach="$subItem['items'] as $subSubItem">
+                                <a n:href="$link">{$subSubItem['title']}</a>
+                            </li>
                         </ul>
-                    </div>
-                </div>
+                    {/if}
+                {/foreach}
             </div>
-        {/if}
-
-    </li>
+        </li>
+    {/foreach}
 </ul>
