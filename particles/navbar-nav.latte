@@ -6,27 +6,29 @@
                 <span n:if="!empty($item['icon'])" n:attr="uk-icon => 'icon: ' . $item['icon']"></span>
                 {$item['title']}
             </a>
-            <div n:if="!empty($item['items'])" class="uk-navbar-dropdown">
+            <div n:if="!empty($item['items'])" class="uk-navbar-dropdown uk-width-xxlarge">
                 {foreach $item['items'] as $subItem}
-                    {if $options['images']}
-                        <div class="uk-text-center uk-dropdown-grid uk-child-width-expand" uk-grid>
-                            <div n:foreach="$subItem['items'] as $subSubItem">
-                                {var link = empty($subSubItem['page']) ? '#' : $subSubItem['page']}
-                                <a n:href="$link">
-                                    <img n:if="!empty($subSubItem['image'])" n:attr="src => $subSubItem['image']" />
-                                    {$subSubItem['title']}
-                                </a>
-                            </div>
-                        </div>
-                    {else}
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-nav-header">{$subItem["title"]}</li>
-                            <li n:if="!$options['images']" n:foreach="$subItem['items'] as $subSubItem">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-nav-header">{$subItem["title"]}</li>
+                        {if $options['images']}
+                            <li>
+                                <div class="uk-text-center uk-dropdown-grid uk-child-width-expand" uk-grid>
+                                    <div n:foreach="$subItem['items'] as $subSubItem">
+                                        {var link = empty($subSubItem['page']) ? '#' : $subSubItem['page']}
+                                        <a n:href="$link">
+                                            <img n:if="!empty($subSubItem['image'])" n:attr="src => $subSubItem['image'], alt => $subSubItem['title']" />
+                                            <span>{$subSubItem['title']}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        {else}
+                            <li n:foreach="$subItem['items'] as $subSubItem">
                                 {var link = empty($subSubItem['page']) ? '#' : $subSubItem['page']}
                                 <a n:href="$link">{$subSubItem['title']}</a>
                             </li>
-                        </ul>
-                    {/if}
+                        {/if}
+                    </ul>
                 {/foreach}
             </div>
         </li>
