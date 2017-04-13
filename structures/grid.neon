@@ -1,0 +1,9 @@
+row:
+  tag: div
+  attributes:
+    uk-grid:
+column:
+  tag: div
+  size:
+    class: uk-width
+    delimiter: "-"
