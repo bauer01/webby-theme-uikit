@@ -11,7 +11,7 @@
 </a>
 <div id="mobile-menu" n:attr="uk-offcanvas => implode(';', $config)">
     <div class="uk-offcanvas-bar">
-        <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+        <ul class="uk-nav-parent-icon" uk-nav>
             {foreach $container->getService('system.menus')->getMenu($options['menu'])['items'] as $item}
             {var link = empty($item['page']) ? '#' : $item['page']}
             <li n:class="$link !== '#' && $webby->link === $item['page'] ? 'uk-active', !empty($category['children']) ? 'uk-parent', $link === '#' ? 'uk-nav-header'">
