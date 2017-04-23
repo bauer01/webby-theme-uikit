@@ -2,5 +2,5 @@ js:
     cdn:
         - //code.jquery.com/jquery-3.2.1.js
     local:
-        - /assets/js/uikit.js
         - /assets/js/uikit-icons.js
+        - /assets/js/uikit.js
