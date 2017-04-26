@@ -1,3 +1,4 @@
-<div class="uk-cover-container uk-height-medium">
-    <img n:attr="src => $options['src']" alt="" uk-cover />
+<div class="uk-cover-container">
+    <canvas n:attr="height => empty($options['height']) ? null : $options['height'], width => empty($options['width']) ? null : $options['width']"></canvas>
+    <img n:attr="src => $options['src'], alt => empty($options['src']) ? null : $options['src']" uk-cover />
 </div>
