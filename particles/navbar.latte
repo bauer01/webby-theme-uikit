@@ -1,4 +1,4 @@
-<div {if !empty($options['sticky'])} uk-sticky="animation: uk-animation-slide-top; top: 1; cls-active: uk-box-shadow-large"{/if}>
+<div {if !empty($options['sticky'])} uk-sticky="show-on-up: true; animation: uk-animation-slide-top; cls-active: uk-box-shadow-large"{/if}>
     <nav n:attr="uk-navbar => 'dropbar: ' . (empty($options['dropbar']) ? 'false' : 'true') . '; boundary-align: true; align: ' . (empty($options['align']) ? 'left' : $options['align'])" class="uk-navbar-container" role="navigation">
         <div n:if="!empty($options['left'])" class="uk-navbar-left">
             {foreach $options['left'] as $item}
