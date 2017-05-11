@@ -18,12 +18,12 @@
                 {if $link === '#'}
                     {$item['title']}
                 {else}
-                    <a n:href="$item['page']">{$item['title']}</a>
+                    <a n:href="$item['page']" {if !empty($item['bookmark']) && $item['bookmark']} uk-scroll{/if}>{$item['title']}</a>
                 {/if}
                 {if !empty($item['items'])}
                     <ul class="uk-nav-sub">
                         <li n:foreach="$item['items'] as $subItem">
-                            <a n:href="$subItem['page']">{$subItem['title']}</a>
+                            <a n:href="$subItem['page']" {if !empty($subItem['bookmark']) && $subItem['bookmark']} uk-scroll{/if}>{$subItem['title']}</a>
                         </li>
                     </ul>
                 {/if}

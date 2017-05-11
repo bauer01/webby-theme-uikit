@@ -16,5 +16,5 @@
             {/foreach}
         </div>
     </nav>
-    <div n:if="$options['dropbar']" class="uk-navbar-dropbar"></div>
+    <div n:if="!empty($options['dropbar']) && $options['dropbar']" class="uk-navbar-dropbar"></div>
 </div>

@@ -1,8 +1,12 @@
+{var items = $container->getService('system.menus')->getMenu($options['menu'])['items']}
+{var offset = empty($options['offset']) ? 0 : $options['offset']}
+{var count = empty($options['count']) ? count($items) : $options['count']}
+
 <ul class="uk-navbar-nav">
-    {foreach array_slice($container->getService('system.menus')->getMenu($options['menu'])['items'], $options['offset'], $options['count']) as $item}
+    {foreach array_slice($items, $offset, $count) as $item}
         {var link = empty($item['page']) ? '#' : $item['page']}
         <li n:class="$link !== '#' && $webby->link === $item['page'] ? 'uk-active'">
-            <a n:href="$link">
+            <a n:href="$link"{if !empty($item['bookmark']) && $item['bookmark']} uk-scroll{/if}>
                 <span n:if="!empty($item['icon'])" n:attr="uk-icon => 'icon: ' . $item['icon']"></span>
                 {$item['title']}
             </a>
