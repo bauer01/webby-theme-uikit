@@ -5,30 +5,31 @@
 {if !empty($options['overlay'])}
     {php $config[] = 'overlay: ' . $options['overlay']}
 {/if}
-
-<a class="uk-navbar-toggle" uk-toggle="target: #mobile-menu" href="#">
-    <span uk-navbar-toggle-icon></span> <span n:if="!empty($options['text'])" class="uk-margin-small-left">{$options['text']}</span>
-</a>
-<div id="mobile-menu" n:attr="uk-offcanvas => implode(';', $config)">
-    <div class="uk-offcanvas-bar">
-        <ul class="uk-nav-parent-icon" uk-nav>
-            {foreach $container->getService('system.menus')->getMenu($options['menu'])['items'] as $item}
-            {var link = empty($item['page']) ? '#' : $item['page']}
-            <li n:class="$link !== '#' && $webby->link === $item['page'] ? 'uk-active', !empty($category['children']) ? 'uk-parent', $link === '#' ? 'uk-nav-header'">
-                {if $link === '#'}
-                    {$item['title']}
-                {else}
-                    <a n:href="$item['page']" {if !empty($item['bookmark']) && $item['bookmark']} uk-scroll{/if}>{$item['title']}</a>
-                {/if}
-                {if !empty($item['items'])}
-                    <ul class="uk-nav-sub">
-                        <li n:foreach="$item['items'] as $subItem">
-                            <a n:href="$subItem['page']" {if !empty($subItem['bookmark']) && $subItem['bookmark']} uk-scroll{/if}>{$subItem['title']}</a>
-                        </li>
-                    </ul>
-                {/if}
-            </li>
-            {/foreach}
-        </ul>
+<div class="uk-navbar-item">
+    <a class="uk-navbar-toggle" uk-toggle="target: #mobile-menu" href="#">
+        <span uk-navbar-toggle-icon></span> <span n:if="!empty($options['text'])" class="uk-margin-small-left">{$options['text']}</span>
+    </a>
+    <div id="mobile-menu" n:attr="uk-offcanvas => implode(';', $config)">
+        <div class="uk-offcanvas-bar">
+            <ul class="uk-nav-parent-icon" uk-nav>
+                {foreach $container->getService('system.menus')->getMenu($options['menu'])['items'] as $item}
+                {var link = empty($item['page']) ? '#' : $item['page']}
+                <li n:class="$link !== '#' && $webby->link === $item['page'] ? 'uk-active', !empty($category['children']) ? 'uk-parent', $link === '#' ? 'uk-nav-header'">
+                    {if $link === '#'}
+                        {$item['title']}
+                    {else}
+                        <a n:href="$item['page']" {if !empty($item['bookmark']) && $item['bookmark']} uk-scroll{/if}>{$item['title']}</a>
+                    {/if}
+                    {if !empty($item['items'])}
+                        <ul class="uk-nav-sub">
+                            <li n:foreach="$item['items'] as $subItem">
+                                <a n:href="$subItem['page']" {if !empty($subItem['bookmark']) && $subItem['bookmark']} uk-scroll{/if}>{$subItem['title']}</a>
+                            </li>
+                        </ul>
+                    {/if}
+                </li>
+                {/foreach}
+            </ul>
+        </div>
     </div>
 </div>

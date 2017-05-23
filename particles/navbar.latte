@@ -5,10 +5,22 @@
                 {particle $item['particle'] (expand) $item}
             {/foreach}
         </div>
-        <div n:if="!empty($options['center'])" class="uk-navbar-center">
-            {foreach $options['center'] as $item}
-                {particle $item['particle'] (expand) $item}
-            {/foreach}
+        <div n:if="!empty($options['center']) || !empty($options['center-left']) || !empty($options['center-right'])" class="uk-navbar-center">
+            <div n:if="!empty($options['center-left'])" class="uk-navbar-center-left">
+                {foreach $options['center-left'] as $item}
+                    {particle $item['particle'] (expand) $item}
+                {/foreach}
+            </div>
+            {if !empty($options['center'])}
+                {foreach $options['center'] as $item}
+                    {particle $item['particle'] (expand) $item, class => 'uk-navbar-item'}
+                {/foreach}
+            {/if}
+            <div n:if="!empty($options['center-right'])" class="uk-navbar-center-right">
+                {foreach $options['center-right'] as $item}
+                    {particle $item['particle'] (expand) $item}
+                {/foreach}
+            </div>
         </div>
         <div n:if="!empty($options['right'])" class="uk-navbar-right">
             {foreach $options['right'] as $item}
