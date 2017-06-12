@@ -13,7 +13,7 @@
             </div>
             {if !empty($options['center'])}
                 {foreach $options['center'] as $item}
-                    {particle $item['particle'] (expand) $item, class => 'uk-navbar-item'}
+                    {particle $item['particle'] (expand) $item}
                 {/foreach}
             {/if}
             <div n:if="!empty($options['center-right'])" class="uk-navbar-center-right">
