@@ -1,32 +1,36 @@
-<div {if !empty($options['sticky'])} uk-sticky="show-on-up: true; animation: uk-animation-slide-top; cls-active: uk-box-shadow-large"{/if}>
-    <nav n:attr="uk-navbar => 'dropbar: ' . (empty($options['dropbar']) ? 'false' : 'true') . '; boundary-align: true; align: ' . (empty($options['align']) ? 'left' : $options['align'])" class="uk-navbar-container" role="navigation">
-        <div n:if="!empty($options['left'])" class="uk-navbar-left">
-            {foreach $options['left'] as $item}
-                {particle $item['particle'] (expand) $item}
-            {/foreach}
-        </div>
-        <div n:if="!empty($options['center']) || !empty($options['center-left']) || !empty($options['center-right'])" class="uk-navbar-center">
-            <div n:if="!empty($options['center-left'])" class="uk-navbar-center-left">
-                {foreach $options['center-left'] as $item}
-                    {particle $item['particle'] (expand) $item}
-                {/foreach}
-            </div>
-            {if !empty($options['center'])}
-                {foreach $options['center'] as $item}
-                    {particle $item['particle'] (expand) $item}
-                {/foreach}
-            {/if}
-            <div n:if="!empty($options['center-right'])" class="uk-navbar-center-right">
-                {foreach $options['center-right'] as $item}
-                    {particle $item['particle'] (expand) $item}
-                {/foreach}
-            </div>
-        </div>
-        <div n:if="!empty($options['right'])" class="uk-navbar-right">
-            {foreach $options['right'] as $item}
-                {particle $item['particle'] (expand) $item}
-            {/foreach}
-        </div>
-    </nav>
+{if !empty($options['sticky'])}<div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky uk-navbar-transparent uk-box-shadow-large; cls-inactive: uk-navbar-transparent; top: 200">{/if}
+    <div class="uk-navbar-container">
+        {if !empty($options['container'])}<div class="uk-container uk-container-expand">{/if}
+            <nav n:attr="uk-navbar => 'dropbar: ' . (empty($options['dropbar']) ? 'false' : 'true') . '; boundary-align: true; align: ' . (empty($options['align']) ? 'left' : $options['align'])" role="navigation">
+                <div n:if="!empty($options['left'])" class="uk-navbar-left">
+                    {foreach $options['left'] as $item}
+                        {particle $item['particle'] (expand) $item}
+                    {/foreach}
+                </div>
+                <div n:if="!empty($options['center']) || !empty($options['center-left']) || !empty($options['center-right'])" class="uk-navbar-center">
+                    <div n:if="!empty($options['center-left'])" class="uk-navbar-center-left">
+                        {foreach $options['center-left'] as $item}
+                            {particle $item['particle'] (expand) $item}
+                        {/foreach}
+                    </div>
+                    {if !empty($options['center'])}
+                        {foreach $options['center'] as $item}
+                            {particle $item['particle'] (expand) $item}
+                        {/foreach}
+                    {/if}
+                    <div n:if="!empty($options['center-right'])" class="uk-navbar-center-right">
+                        {foreach $options['center-right'] as $item}
+                            {particle $item['particle'] (expand) $item}
+                        {/foreach}
+                    </div>
+                </div>
+                <div n:if="!empty($options['right'])" class="uk-navbar-right">
+                    {foreach $options['right'] as $item}
+                        {particle $item['particle'] (expand) $item}
+                    {/foreach}
+                </div>
+            </nav>
+        {if !empty($options['container'])}</div>{/if}
+    </div>
     <div n:if="!empty($options['dropbar']) && $options['dropbar']" class="uk-navbar-dropbar"></div>
-</div>
+{if !empty($options['sticky'])}</div>{/if}
