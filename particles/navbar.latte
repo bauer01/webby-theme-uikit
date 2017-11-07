@@ -1,4 +1,4 @@
-{if !empty($options['sticky'])}<div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky uk-navbar-transparent uk-box-shadow-large; cls-inactive: uk-navbar-transparent; top: 200">{/if}
+{if !empty($options['sticky'])}<div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky uk-box-shadow-large; top: 200">{/if}
     <div class="uk-navbar-container">
       {if !empty($options['container'])}<div n:class="uk-container, $options['container']">{/if}
             <nav n:attr="uk-navbar => 'dropbar: ' . (empty($options['dropbar']) ? 'false' : 'true') . '; boundary-align: true; align: ' . (empty($options['align']) ? 'left' : $options['align'])" role="navigation">
